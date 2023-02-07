@@ -1,74 +1,63 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Team {
-    private String TeamName;
-    private int numberOfOvers;
+
+     String TeamName;
+     int playedMathes=0;
+     int wins=0;
+     int lose=0;
+     int points=0;
+    //int numberOfOvers;
+
+
     TeamScore score;
-     int playersLeftToBat=11;
-     int totalRuns=0;
+    ArrayList<Player> playerArrayList=new ArrayList<>(11);
+    public void setupTeam()
+    {
+        for(int i=1;i<12;i++)
+        {
+            Player athlete;
+
+
+            if(i<=6) {
+                athlete = new Batsman(i);
+            }
+            else
+                athlete=new Bowler(i);
+            playerArrayList.add(athlete);
+        }
+    }
+
     public void setTeamName(String name)
     {
         this.TeamName=name;
     }
-    public void setNumberOfOvers(int numberOfOvers)
-    {
-        this.numberOfOvers=numberOfOvers;
+
+    public void setPlayedMathes() {
+        this.playedMathes++;
     }
-    Team(String name,int numberOfOvers)
+
+    public void setWins() {
+        this.wins++;
+    }
+
+    public void setLose() {
+        this.lose++;
+    }
+
+    public void setWinPoints() {
+        this.points+=2;
+    }
+    public void setTiePoints()
+    {
+        this.points+=1;
+    }
+
+    Team(String name)
     {
         this.setTeamName(name);
-        this.setNumberOfOvers(numberOfOvers);
-    }
-    public String batsmanScore()
-    {
-        ArrayList<String > hitValue= new ArrayList<String>();
-
-        hitValue.add("1");
-        hitValue.add("2");
-        hitValue.add("3");
-        hitValue.add("4");
-        hitValue.add("5");
-        hitValue.add("6");
-        hitValue.add("W");
-
-        int index=(int)(Math.random()*7);
-      //  System.out.println(index);
-        return hitValue.get(index);
-
-    }
-
-    public void playGame() {
-        while (numberOfOvers > 0) {
-            int balls = 6;
-            for (int i = 1; i <= balls; i++) {
-                String hitValue = batsmanScore();
-               // System.out.println(hitValue);
-                if (hitValue != "W") {
-
-                    System.out.println("Batsman has scored " + hitValue + " runs");
-                    totalRuns+=Integer.parseInt(hitValue);
-
-                } else {
-                    System.out.println("Batsman is out");
-                    playersLeftToBat--;
-                }
-                if(playersLeftToBat==0)
-                {
-                    System.out.println("Team is All out");
-                    //System.out.println("Total score of Team " + this.TeamName + " is " + totalRuns);
-                    break;
-
-                }
-
-            }
-            if(playersLeftToBat==0)
-                break;
-            numberOfOvers--;
-        }
-        System.out.println("Innings of team "+this.TeamName+" is over");
-        System.out.println("Total score of Team " + this.TeamName + " is " + totalRuns);
-        score=new TeamScore(totalRuns,11-playersLeftToBat);
-        return;
+        //this.numberOfOvers=numberOfOvers;
+        setupTeam();
 
     }
 
