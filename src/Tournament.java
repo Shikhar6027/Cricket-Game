@@ -1,29 +1,32 @@
 import java.security.PublicKey;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Tournament {
 
-    ArrayList<Team> teams = new ArrayList<>();
+    static Map<String ,Team> teams = new HashMap<String,Team>();
     public void setTeams () {
-        teams.add(new Team("MI  "));
-        teams.add(new Team("CSK "));
-        teams.add(new Team("RCB "));
-        teams.add(new Team("DC  "));
-        teams.add(new Team("SRH "));
-        teams.add(new Team("RR  "));
-        teams.add(new Team("PBKS"));
-        teams.add(new Team("KKR "));
-        teams.add(new Team("LSG "));
-        teams.add(new Team("GT  "));
+        teams.put("MI",new Team("MI"));
+        teams.put("CSK",new Team("CSK"));
+        teams.put("RCB",new Team("RCB"));
+        teams.put("DC",new Team("DC"));
+        teams.put("SRH",new Team("SRH"));
+        teams.put("RR",new Team("RR"));
+        teams.put("PBKS",new Team("PBKS"));
+        teams.put("KKR",new Team("KKR"));
+        teams.put("LSG",new Team("LSG"));
+        teams.put("GT",new Team("GT"));
 
     }
-    public Void pointsTable()
+    public static Void pointsTable()
     {
-        System.out.println("Team     M      W      L      P");
-        for(Team t1:teams)
+        System.out.println("Team  M   W   L  P");
+        int cnt=0;
+        for(Map.Entry<String,Team> t1: teams.entrySet())
         {
-            System.out.println(t1.TeamName + "    "+ t1.playedMathes+"   "+t1.wins+"    "+t1.lose+"    "+t1.points);
+            cnt++;
+            System.out.println(t1.getValue().TeamName + "    "+ t1.getValue().playedMathes+"   "+t1.getValue().wins+"    "+t1.getValue().lose+"    "+t1.getValue().points);
         }
+        System.out.println(teams.size());
         return null;
     }
 
