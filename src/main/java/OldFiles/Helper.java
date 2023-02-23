@@ -98,14 +98,6 @@ public class Helper {
         }
         score=new TeamScore(totalRuns,wicketCount);
         display=new ScoreBoard(playerArrayListBat,playerArrayListBall,score);
-
-//        System.out.println("Innings of team "+this.TeamName+" is over");
-//        System.out.println("Total score of Team " + this.TeamName + " is " + totalRuns);
-
-        return;
-
-
-
     }
 
 }
